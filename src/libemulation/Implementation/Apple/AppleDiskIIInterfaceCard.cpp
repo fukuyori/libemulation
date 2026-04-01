@@ -282,7 +282,7 @@ void AppleDiskIIInterfaceCard::setDriveOn(bool value)
     }
     else
     {
-        ControlBusTimer timer = { 1.0 * APPLEII_CLOCKFREQUENCY, 0};
+        ControlBusTimer timer = { static_cast<OESLong>(1.0 * APPLEII_CLOCKFREQUENCY), 0};
         
         controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
         

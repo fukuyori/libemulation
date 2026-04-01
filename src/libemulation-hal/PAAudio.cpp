@@ -796,11 +796,11 @@ void PAAudio::openRecorder(string path)
 {
     closeRecorder();
     
-    SF_INFO sfInfo = 
+    SF_INFO sfInfo =
     {
         0,
-        sampleRate,
-        channelNum,
+        static_cast<int>(sampleRate),
+        static_cast<int>(channelNum),
         SF_FORMAT_WAV | SF_FORMAT_PCM_16,
         0,
         0,

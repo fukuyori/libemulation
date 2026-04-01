@@ -234,7 +234,7 @@ bool AppleDiskDrive525::postMessage(OEComponent *sender, int message, void *data
                 OEInt id = 0;
                 controlBus->postMessage(this, CONTROLBUS_INVALIDATE_TIMERS, &id);
                 
-                ControlBusTimer timer = { 0.0005 * APPLEII_CLOCKFREQUENCY, 0 };
+                ControlBusTimer timer = { static_cast<OESLong>(0.0005 * APPLEII_CLOCKFREQUENCY), 0 };
                 controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
             }
             
@@ -335,7 +335,7 @@ void AppleDiskDrive525::notify(OEComponent *sender, int notification, void *data
             OEInt id = 1;
             controlBus->postMessage(this, CONTROLBUS_INVALIDATE_TIMERS, &id);
             
-            ControlBusTimer timer = { 0.05 * APPLEII_CLOCKFREQUENCY, 1 };
+            ControlBusTimer timer = { static_cast<OESLong>(0.05 * APPLEII_CLOCKFREQUENCY), 1 };
             controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
             
             break;
@@ -509,7 +509,7 @@ bool AppleDiskDrive525::openDiskImage(string path)
         {
             isOpenSound = true;
             
-            ControlBusTimer timer = { 1.0 * APPLEII_CLOCKFREQUENCY, 2 };
+            ControlBusTimer timer = { static_cast<OESLong>(1.0 * APPLEII_CLOCKFREQUENCY), 2 };
             controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
         }
         else

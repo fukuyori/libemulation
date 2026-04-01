@@ -76,7 +76,7 @@ void AppleIIIBeeper::write(OEAddress address, OEChar value)
 
 void AppleIIIBeeper::scheduleNextTimer(OESLong cycles)
 {
-    ControlBusTimer timer = { cycles + 0.5F * APPLEII_CLOCKFREQUENCY / FREQUENCY, 0};
+    ControlBusTimer timer = { cycles + static_cast<OESLong>(0.5F * APPLEII_CLOCKFREQUENCY / FREQUENCY), 0};
     
     controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
 }

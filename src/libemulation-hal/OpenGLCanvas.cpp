@@ -944,11 +944,17 @@ void OpenGLCanvas::configureShaders()
             break;
             
         case CANVAS_YUV:
-        case CANVAS_YIQ:
             // Y'UV decoder matrix
             decoderMatrix = OEMatrix3(1, 1, 1,
                                       0, -0.394642F, 2.032062F,
                                       1.139883F, -0.580622F, 0) * decoderMatrix;
+            break;
+
+        case CANVAS_YIQ:
+            // Y'IQ decoder matrix
+            decoderMatrix = OEMatrix3(1, 1, 1,
+                                      0.9563F, -0.2721F, -1.1070F,
+                                      0.6210F, -0.6474F, 1.7046F) * decoderMatrix;
             break;
             
         case CANVAS_CXA2025AS:

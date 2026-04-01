@@ -443,7 +443,7 @@ void MC6845::scheduleTimer(OESLong cycles)
     controlBus->postMessage(this, CONTROLBUS_GET_CYCLES, &frameStart);
     frameStart += cycles;
     
-    ControlBusTimer timer = { cycles + ceil(frameCycleNum / clockMultiplier), 0 };
+    ControlBusTimer timer = { cycles + static_cast<OESLong>(ceil(frameCycleNum / clockMultiplier)), 0 };
     controlBus->postMessage(this, CONTROLBUS_SCHEDULE_TIMER, &timer);
     
     if (frameStartAddress.w.l != startAddress.w.l)
